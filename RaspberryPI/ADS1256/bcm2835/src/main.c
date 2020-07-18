@@ -6,6 +6,8 @@
 #include <time.h>
 #include <string.h>
 #include <sys/timeb.h>
+#include <unistd.h>
+
 void  Handler(int signo)
 {
     //System Exit
@@ -31,27 +33,12 @@ int main(void)
     }
 
     while(1){
-    
-
-        
-        // printf("0 : %f\r\n",ADS1256_GetChannalValue(0)*5.0/0x7fffff);
-        // printf("1 : %f\r\n",ADS1256_GetChannalValue(1)*5.0/0x7fffff);
-        // printf("2 : %f\r\n",ADS1256_GetChannalValue(2)*5.0/0x7fffff);
-        // printf("3 : %f\r\n",ADS1256_GetChannalValue(3)*5.0/0x7fffff);
-        // printf("4 : %f\r\n",ADS1256_GetChannalValue(4)*5.0/0x7fffff);
-        // printf("5 : %f\r\n",ADS1256_GetChannalValue(5)*5.0/0x7fffff);
-        // printf("6 : %f\r\n",ADS1256_GetChannalValue(6)*5.0/0x7fffff);
-        // printf("7 : %f\r\n",ADS1256_GetChannalValue(7)*5.0/0x7fffff);
-        
         ADS1256_GetAll(ADC);
-        
-             
-        
-        
         for(i=0;i<8;i++){
             printf("%d %f\r\n",i,ADC[i]*5.0/0x7fffff);
         }
         printf("\33[8A");//Move the cursor up 8 lines
+        usleep(200000);
     }
     return 0;
 }
