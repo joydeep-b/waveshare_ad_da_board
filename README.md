@@ -14,6 +14,9 @@ Firmware for Waveshare AD/DA board
     sudo make install
     ```
 1. Run `sudo raspi-config` and enable SPI, I2C
+1. Under root (`sudo su`), run: `echo “device_tree=bcm2710-rpi-3-b.dtb” >> /boot/config.txt`
+1. Reboot.
+
 
 # Compile
 ```
